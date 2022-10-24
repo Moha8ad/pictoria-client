@@ -48,4 +48,11 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'flex-end'
   },
+  meme: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    
+  }
 });

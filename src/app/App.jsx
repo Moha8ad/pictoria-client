@@ -14,17 +14,17 @@ import { useSelector } from 'react-redux';
 
 const App = () => {
 
-  const user = useSelector(state => state.auth.authData.result)
+  const user = useSelector(state => state?.auth?.authData?.result)
 
   return (
     <Container maxWidth="xl">
       <Navbar />
       <Routes>
-        <Route path="/" exact element={<Navigate replace to="/posts" />}></Route>
+        <Route path="/" exact element={<Navigate replace to="/posts?page=1" />}></Route>
         <Route path="/posts" exact element={<Home />}></Route>
         <Route path="/posts/search" exact element={<Home />}></Route>
         <Route path="/posts/:id" exact element={<PostDetails />}></Route>
-        <Route path="/auth" exact element={!user ? <Auth /> : <Navigate replace to="/posts" />}></Route>
+        <Route path="/auth" exact element={!user ? <Auth /> : <Navigate replace to="/posts?page=1" />}></Route>
         <Route path="/profile" exact element={<Profile />}></Route>
       </Routes>
     </Container>

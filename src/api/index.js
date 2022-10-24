@@ -10,7 +10,7 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-const postsUrl = '/posts';
+const postsUrl = '/posts/';
 
 export const fetchPosts = () => API.get(postsUrl);
 export const createPost = (newPost) => API.post(postsUrl, newPost);

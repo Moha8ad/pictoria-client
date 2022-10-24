@@ -13,7 +13,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({ 
-    posts: posts, 
+    postsDB: posts, 
     auth: auth 
 });
 

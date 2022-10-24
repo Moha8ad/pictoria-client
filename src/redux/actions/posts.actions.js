@@ -2,6 +2,11 @@ import PostActionTypes from '../constants/posts.types.js';
 
 import * as api from '../../api/index.js';
 
+export const currentPage = pageNumber => ({
+  type: PostActionTypes.CURRENT_PAGE, 
+  payload: pageNumber
+})
+
 export const getPosts = () => async (dispatch) => {
   try {
     const { data } = await api.fetchPosts();

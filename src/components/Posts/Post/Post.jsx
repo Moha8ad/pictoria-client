@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
 import { ThumbUpAltOutlined, ThumbUpAlt, Delete, MoreHoriz } from '@material-ui/icons/';
 import moment from 'moment';
 
-import { likePost, deletePost } from '../../../redux/actions/posts.actions';
+import { likePost, deletePost, currentPage } from '../../../redux/actions/posts.actions';
 
 import useStyles from './styles';
+import { useNavigate } from 'react-router-dom';
 
 const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const navigateTo = useNavigate();
 
-  const userInfo = useSelector((state) => state.auth.authData?.result);
-  
+  const totalPosts = useSelector((state) => state.postsDB.posts).length
+  const [postsPerPage] = useState(4);
+  const currNumOfPages = (totalPosts - 1)/postsPerPage;
+  const mathCurrNumOfPage = Math.floor(currNumOfPages)
+ 
+  const numberOfPages =  currNumOfPages <= mathCurrNumOfPage ? mathCurrNumOfPage :  mathCurrNumOfPage + 1 
+
+  const userInfo = useSelector((state) => state.auth.authData?.result)
+
+  const handleDelete = () => {
+    dispatch(deletePost(post._id))
+    dispatch(currentPage(numberOfPages))
+    navigateTo(`/posts?page=${numberOfPages}`)
+  }
+
   const Likes = () => {
     if (post.likes.length > 0) {
       return post.likes.find((like) => like === (userInfo?.googleId || userInfo?._id))
@@ -35,11 +50,10 @@ const Post = ({ post, setCurrentId }) => {
         <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
       </div>
-
       {(userInfo?.googleId === post?.name || userInfo?.name === post?.name) && (
         <div className={classes.overlay2}>
           <Button onClick={() => setCurrentId(post._id)} style={{ color: 'white' }} size="small">
-            <MoreHoriz fontSize="default" />
+            <MoreHoriz fontSize="medium" />
           </Button>
         </div>
         )}
@@ -49,7 +63,7 @@ const Post = ({ post, setCurrentId }) => {
           <Likes />
         </Button>
         {(userInfo?.googleId === post?.name || userInfo?.name === post?.name) && (
-          <Button size="small" color="secondary" onClick={() => dispatch(deletePost(post._id))}>
+          <Button size="small" color="secondary" onClick={() => handleDelete()}>
             <Delete fontSize="small" /> Delete
           </Button>
         )}
