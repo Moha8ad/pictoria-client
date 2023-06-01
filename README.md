@@ -3,6 +3,8 @@ Server: https://github.com/Moha8ad/pictoria-server
 
 ## Descriptions
 
+Create, Share and Discover Memorable Posts
+
 This repository is a social media application built using React, Redux, JavaScript, Axios, Express, Bcrypt, Moment.js, React-Google-Login, and Material-UI. Users can create posts with images, quotes, and authors, as well as delete them and perform other actions. 
 
 The frontend is developed with React, Redux handles state management, and Material-UI provides pre-designed components for an attractive user interface. Express handles backend operations, with Axios as the HTTP client for seamless frontend-backend communication.
