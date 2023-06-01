@@ -66,7 +66,7 @@ This repository offers a foundation for a feature-rich social media app, enablin
    ```shell
    yarn start
 
-3. Navigate to the project's server directoy
+3. Navigate to the project's client directoy
 4. Start the client server:
 
    ```shell
