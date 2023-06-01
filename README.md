@@ -43,21 +43,36 @@ This repository offers a foundation for a feature-rich social media app, enablin
 
 ## Installation
 
-1. Clone the repository.
-2. Navigate to the project directory.
-3. Install the dependencies using the following command:
+1. Create a file.
+2. Clone the repository inside the file.
+3. Navigate to the project's client directory.
+4. Install the dependencies using the following command:
+
+   ```shell
+   yarn install
+   
+4. Clone the [server repository](https://github.com/Moha8ad/pictoria-server) inside the file you created initially.
+5. Navigate to the project's server directory.
+6. Install the dependencies using the following command:
 
    ```shell
    yarn install
 
 ## Usage
 
-1. Start the development server:
+1. Navigate to the project's server directoy
+2. Start the backend server:
 
    ```shell
    yarn start
 
-2. Open the application in your browser at http://localhost:3000.
+3. Navigate to the project's server directoy
+4. Start the client server:
+
+   ```shell
+   yarn start
+   
+5. Open the application in your browser at http://localhost:3000.
 
 ## Contributing
 
